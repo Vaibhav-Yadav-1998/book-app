@@ -1,15 +1,54 @@
 <template>
     <section id="books" class="has-text-centered">
         <h1 class="title">Books Section</h1>
+        <button class="button is-success" @click="isActive = true"> + Add Book</button>
+
+        <div class="modal" :class="{'is-active': isActive}">
+          <div class="modal-background"></div>
+          <div class="modal-content has-background-white">
+
+            <div>
+              <div class="field">
+                <label for="title" class="label">Title</label>
+                <div class="control">
+                  <input type="text" name="title" class="input" placeholder="title" required v-model="title">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="author" class="label">Author</label>
+                <div class="control">
+                  <input type="text" name="author" class="input" placeholder="author" required v-model="author">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="cover" class="label">Cover</label>
+                <div class="control">
+                  <input type="url" name="cover" class="input" placeholder="cover url" v-model="cover">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                   <button class="button is-primary" @click="addBook">Submit</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <button class="modal-close is-large" @click="close"></button>
+        </div>
+
         <div id="grid">
             <book-card v-for="book in books" :key="book.id"
             :title="book.title"
             :author="book.author"
             :cover="book.cover">
-              <button class="button is-success card-footer-item" @click="edit">
+              <button class="button is-dark card-footer-item" @click="edit">
                   Edit
               </button>
-              <button class="button is-danger card-footer-item" @click="del">
+              <button class="button is-danger card-footer-item" @click="deleteBook()">
                   Delete
               </button>
             </book-card>
@@ -20,6 +59,7 @@
 <script>
 import Card from "@/components/Card";
 import apiURL from "../../api-config";
+import axios from "axios";
 
 export default {
   name: "Books",
@@ -28,15 +68,20 @@ export default {
   },
   data() {
     return {
-      books: ""
+      books: "",
+      isActive: false,
+      title: "",
+      author: "",
+      cover: "",
+      deleteId: ""
     };
   },
   methods: {
     getBooks() {
-      fetch(apiURL)
-        .then(res => res.json())
-        .then(data => {
-          this.books = data;
+      axios
+        .get(apiURL)
+        .then(res => {
+          this.books = res.data;
           console.log(this.books);
         })
         .catch(err => {
@@ -44,11 +89,31 @@ export default {
           alert("sorry something went wrong, try again");
         });
     },
+    addBook() {
+      axios
+        .post(apiURL, {
+          title: this.title,
+          author: this.author,
+          cover: this.cover
+        })
+        .then(res => {
+          this.books.push(res);
+        })
+        .catch(err => {
+          console.log(err);
+          alert("sorry something went wrong, try again");
+        });
+
+      this.isActive = false;
+    },
     edit() {
       console.log("edit");
     },
-    del() {
+    deleteBook() {
       console.log("delete");
+    },
+    close() {
+      this.isActive = false;
     }
   },
   mounted() {
@@ -63,5 +128,9 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.modal-content {
+  padding: 35px;
 }
 </style>
