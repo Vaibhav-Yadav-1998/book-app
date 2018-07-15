@@ -8,7 +8,7 @@
         <div class="card-content">
             <div class="content">
                 <div class="card-image">
-                    <img :src="cover" alt="book cover">
+                    <img onerror="this.onerror = null; this.src = 'https://tinyurl.com/ybloln78'" :src="cover" alt="book cover">
                 </div>
                 <h2 class="subtitle">{{author}}</h2>
             </div>
