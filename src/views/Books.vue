@@ -1,6 +1,6 @@
 <template>
     <section id="books" class="has-text-centered">
-        <h1 class="title">Books Section</h1>
+        <h1 class="title">Books</h1>
         <button class="button is-success" @click="isActive = true"> + Add Book</button>
 
         <!-- add book form -->
@@ -85,7 +85,7 @@
             :title="book.title"
             :author="book.author"
             :cover="book.cover">
-              <button class="button is-dark card-footer-item" @click="edit(book)">
+              <button class="button is-primary card-footer-item" @click="edit(book)">
                   Edit
               </button>
               <button class="button is-danger card-footer-item" @click="deleteBook(book)">
@@ -242,6 +242,16 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+#books {
+  background-color: #383737;
+}
+
+.title {
+  padding-top: 25px;
+  color: white;
+  font-family: "Lobster", cursive;
 }
 
 .modal-content {
