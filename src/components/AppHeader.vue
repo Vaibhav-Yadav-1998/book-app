@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-info">
+    <nav class="navbar is-primary">
         <div class="navbar-brand">
             <a href="#" class="navbar-item" aria-label="menu" aria-expanded="false">
                 <strong>BookApp</strong>
