@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .navbar-brand {
-  font-family: "Lobster", cursive;
+  font-family: "Lobster", sans-serif, cursive;
   font-size: 25px;
 }
 </style>
