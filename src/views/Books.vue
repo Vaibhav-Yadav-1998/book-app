@@ -251,7 +251,7 @@ export default {
 .title {
   padding-top: 25px;
   color: white;
-  font-family: "Lobster", cursive;
+  font-family: "Lobster", sans-serif, cursive;
 }
 
 .modal-content {
