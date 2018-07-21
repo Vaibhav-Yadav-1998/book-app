@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .title {
   font-size: 3rem;
-  font-family: "Lobster", cursive;
+  font-family: "Lobster", sans-serif, cursive;
   margin-bottom: 50px;
 }
 </style>
