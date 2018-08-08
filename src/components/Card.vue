@@ -44,6 +44,8 @@ export default {
   max-width: 400px;
   max-height: 500px;
   margin: 30px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 img {
