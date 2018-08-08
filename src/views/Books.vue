@@ -1,7 +1,10 @@
 <template>
     <section id="books" class="has-text-centered">
         <h1 class="title">Books</h1>
-        <button class="button is-success" @click="isActive = true"> + Add Book</button>
+        <button class="button is-success" @click="isActive = true"> 
+          <i class="fas fa-plus-square"></i>
+           Add Book
+        </button>
 
         <!-- add book form -->
         <div class="modal" :class="{'is-active': isActive}">
@@ -86,9 +89,11 @@
             :author="book.author"
             :cover="book.cover">
               <button class="button is-primary card-footer-item" @click="edit(book)">
+                <i class="fas fa-pen"></i>
                   Edit
               </button>
               <button class="button is-danger card-footer-item" @click="deleteBook(book)">
+                <i class="fas fa-trash-alt"></i>
                   Delete
               </button>
             </book-card>
@@ -251,10 +256,14 @@ export default {
 .title {
   padding-top: 25px;
   color: white;
-  font-family: "Lobster", sans-serif, cursive;
+  font-family: "Lobster", Arial, Helvetica, sans-serif;
 }
 
 .modal-content {
   padding: 35px;
+}
+
+i {
+  padding: 0 7px;
 }
 </style>
