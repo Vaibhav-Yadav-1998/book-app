@@ -3,6 +3,7 @@
         <div class="navbar-brand">
             <a href="#" class="navbar-item" aria-label="menu" aria-expanded="false">
                 <strong>BookApp</strong>
+                <i class="fas fa-book logo"></i>
             </a>
             <a class="navbar-burger" role="button" @click="isActive = !isActive">
                 <span aria-hidden="true"></span>
@@ -33,5 +34,9 @@ export default {
 .navbar-brand {
   font-family: "Lobster", sans-serif, cursive;
   font-size: 25px;
+}
+
+.logo {
+  padding: 0 10px;
 }
 </style>
